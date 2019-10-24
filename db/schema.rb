@@ -16,16 +16,18 @@ ActiveRecord::Schema.define(version: 2019_10_24_161214) do
     t.datetime "date"
     t.integer "doctor_id"
     t.integer "patient_id"
+    t.integer "city_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "city_id"
+    t.integer "cities_id"
+    t.index ["cities_id"], name: "index_appointments_on_cities_id"
     t.index ["city_id"], name: "index_appointments_on_city_id"
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["patient_id"], name: "index_appointments_on_patient_id"
   end
 
   create_table "cities", force: :cascade do |t|
-    t.string "name"
+    t.string "city_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -44,18 +46,22 @@ ActiveRecord::Schema.define(version: 2019_10_24_161214) do
     t.string "first_name"
     t.string "last_name"
     t.string "zip_code"
+    t.integer "city_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "city_id"
+    t.integer "cities_id"
+    t.index ["cities_id"], name: "index_doctors_on_cities_id"
     t.index ["city_id"], name: "index_doctors_on_city_id"
   end
 
   create_table "patients", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.integer "city_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "city_id"
+    t.integer "cities_id"
+    t.index ["cities_id"], name: "index_patients_on_cities_id"
     t.index ["city_id"], name: "index_patients_on_city_id"
   end
 
@@ -65,7 +71,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_161214) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "appointments", "cities"
-  add_foreign_key "doctors", "cities"
-  add_foreign_key "patients", "cities"
+  add_foreign_key "appointments", "cities", column: "cities_id"
+  add_foreign_key "doctors", "cities", column: "cities_id"
+  add_foreign_key "patients", "cities", column: "cities_id"
 end
