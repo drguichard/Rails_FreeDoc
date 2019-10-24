@@ -49,6 +49,6 @@ Ta startup de docteurs marche à merveille, tellement que tu aimerais ajouter pl
 
 city. Chaque docteur, patient, et rendez-vous est lié à une city. Une city peut avoir plusieurs docteurs, patients, et rendez-vous.
 tu voudrais virer la ligne specialty de ta table doctor et la remplacer par un model à part entière : tu vas donc créer un model specialty. Un docteur aurait plusieurs specialty (DEAL_WITH_IT), et une specialty pourrait concerner plusieurs doctor.
-Comme d'hab tu vas tester et tu compléteras le seeds.rb pour prendre en compte ces changements.
+Comme d'hab tu vas tester et tu compléteras le seeds.rb pour prendre en compte ces changements. Auteur: DrGuichard
 
 Et voilà pour FreeDoc ! Doctolib est en PLS.
